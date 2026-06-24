@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import fastf1
 from fastf1.core import Session
-from Leonardo_V2_1_0 import donnees   
+from Leonardo_V2_1_1 import donnees   
 
 # Get language from session state (set in main app)
 lang = st.session_state.lang
