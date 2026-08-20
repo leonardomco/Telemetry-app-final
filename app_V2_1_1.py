@@ -1,6 +1,6 @@
 import streamlit as st
 
-# --------------------------------------------------
+
 # Page config
 # --------------------------------------------------
 st.set_page_config(
@@ -9,14 +9,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# --------------------------------------------------
+
 # Language state
 # --------------------------------------------------
 if "lang" not in st.session_state:
     st.session_state.lang = "Français"
 
-# --------------------------------------------------
-# TOP BAR (layout-based, NOT CSS)
+
+# TOP BAR 
 # --------------------------------------------------
 top_left, top_spacer, top_right = st.columns([6, 1, 2])
 
@@ -28,14 +28,14 @@ with top_right:
         label_visibility="collapsed"
     )
 
-# --------------------------------------------------
+
 # Force rerun on language change
 # --------------------------------------------------
 if st.session_state.get("_last_lang") != st.session_state.lang:
     st.session_state["_last_lang"] = st.session_state.lang
     st.rerun()
 
-# --------------------------------------------------
+
 # Page labels
 # --------------------------------------------------
 PAGE_LABELS = {
@@ -53,7 +53,7 @@ PAGE_LABELS = {
 
 labels = PAGE_LABELS[st.session_state.lang]
 
-# --------------------------------------------------
+
 # Home page
 # --------------------------------------------------
 def home():
@@ -78,7 +78,7 @@ def home():
     st.write(t["subtitle"])
     st.info(f"{t['telemetry']}\n\n{t['info']}")
 
-# --------------------------------------------------
+
 # Navigation (translated)
 # --------------------------------------------------
 home_page = st.Page(home, title=labels["home"],  default=True)
