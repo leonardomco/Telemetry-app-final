@@ -3,7 +3,7 @@ import pandas as pd
 
 lang = st.session_state.lang
 
-# --------------------------------------------------
+
 # Translations
 # --------------------------------------------------
 TEXT = {
@@ -345,7 +345,7 @@ TEXT["English"].update({
 def t(key):
     return TEXT[lang][key]
 
-# --------------------------------------------------
+
 # Page content
 # --------------------------------------------------
 st.title(t("title"))
