@@ -10,7 +10,7 @@ from Leonardo_V2_1_1 import donnees
 # Get language from session state (set in main app)
 lang = st.session_state.lang
 
-# Set translation dictionary AND store it in session_state
+# Set translation dictionary and store it in session_state
 T = {
     "title": {"Français": "Télémétrie Formule 1", "English": "Formula 1 Telemetry"},
     "year": {"Français": "Année", "English": "Year"},
@@ -36,7 +36,7 @@ T = {
         "Français": "Sélectionnez et confirmez une session.",
         "English": "Select and confirm a session."
     },
-    # --- Graph Labels Translation ---
+    # Graph Labels Translation
     "dist": {"Français": "Distance (m)", "English": "Distance (m)"},
     
     "traj_title": {"Français": "Trajectoire", "English": "Track Map / Trajectory"},
@@ -146,7 +146,7 @@ SESSION_MAP = {
 }
 st.session_state.SESSION_MAP = SESSION_MAP
 
-# -------------------------------------------------------------------------
+
 #  APP CONFIG
 # -------------------------------------------------------------------------
 
@@ -162,7 +162,7 @@ for key, default in {
     if key not in st.session_state:
         st.session_state[key] = default
 
-# -------------------------------------------------------------------------
+
 #  HELPERS — FastF1 queries
 # -------------------------------------------------------------------------
 def session_to_fastf1(display_name):
@@ -251,7 +251,7 @@ def get_driver_list(year, gp_name, session_name):
 
     return sorted(list(set(codes)))
 
-# -------------------------------------------------------------------------
+
 #  NEW TOP CONTAINER WITH ALL CONTROLS
 # -------------------------------------------------------------------------
 
@@ -260,7 +260,7 @@ with st.container():
     # Title
     st.title(T["title"][lang])
 
-    # --- YEAR SELECT ---
+    # YEAR SELECT 
     year = st.selectbox(T["year"][lang], list(range(2018, 2026)), key="year")
 
     if st.button(T["ok_year"][lang]):
@@ -273,7 +273,7 @@ with st.container():
         st.info(T["select_confirm_year"][lang])
         st.stop()
 
-    # --- GRAND PRIX ---
+    # GRAND PRIX 
     gp_list = get_gp_list(year)
     gp_name = st.selectbox(T["gp"][lang], gp_list, key="gp")
 
@@ -286,7 +286,7 @@ with st.container():
         st.info(T["select_confirm_gp"][lang])
         st.stop()
 
-    # --- SESSION ---
+    # SESSION 
     session_list = get_session_list(year, gp_name)
     session_name = st.selectbox(T["session"][lang], session_list, key="session")
 
@@ -298,7 +298,7 @@ with st.container():
         st.info(T["select_confirm_session"][lang])
         st.stop()
 
-    # --- DRIVER ---
+    # DRIVER 
     drivers = get_driver_list(year, gp_name, session_name)
 
     pilote_code = st.selectbox(
@@ -314,10 +314,10 @@ with st.container():
     if not st.session_state.driver_ok:
         st.stop()
 
-    # --- LOAD BUTTON ---
+    # LOAD BUTTON 
     load_btn = st.button(T["load"][lang])
 
-# -------------------------------------------------------------------------
+
 #  DATA LOADING + MAIN DISPLAY
 # -------------------------------------------------------------------------
 if load_btn:
@@ -353,7 +353,7 @@ if load_btn:
 
             st.success(T["data_loaded_success"][lang])
 
-            # -----------------------------------------------------------------
+            
             #  TRAJECTOIRE (track map)
             # -----------------------------------------------------------------
             X = track[:, 0]
@@ -424,7 +424,7 @@ if load_btn:
 
             st.plotly_chart(fig_traj, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  ALTITUDE
             # -----------------------------------------------------------------
             st.subheader(T["alt_title"][lang])
@@ -469,7 +469,7 @@ if load_btn:
 
             st.plotly_chart(fig_alt, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  VITESSE
             # -----------------------------------------------------------------
             st.subheader(T["vit_title"][lang])
@@ -514,7 +514,7 @@ if load_btn:
 
             st.plotly_chart(fig_vit, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  ACCÉLÉRATION TANGENTIELLE
             # -----------------------------------------------------------------
             st.subheader(T["at_title"][lang])
@@ -558,7 +558,7 @@ if load_btn:
 
             st.plotly_chart(fig_a_t, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  ACCÉLÉRATION NORMALE
             # -----------------------------------------------------------------
             st.subheader(T["an_title"][lang])
@@ -602,7 +602,7 @@ if load_btn:
 
             st.plotly_chart(fig_a_n, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  ACCÉLÉRATION VERTICALE
             # -----------------------------------------------------------------
             st.subheader(T["av_title"][lang])
@@ -646,7 +646,7 @@ if load_btn:
 
             st.plotly_chart(fig_a_v, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  PORTANCE
             # -----------------------------------------------------------------
             st.subheader(T["port_title"][lang])
@@ -703,7 +703,7 @@ if load_btn:
 
             st.plotly_chart(fig_portance, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  TRAÎNÉE
             # -----------------------------------------------------------------
             st.subheader(T["train_title"][lang])
@@ -758,7 +758,7 @@ if load_btn:
 
             st.plotly_chart(fig_trainee, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  FORCE DE FROTTEMENT DE ROULEMENT
             # -----------------------------------------------------------------
             st.subheader(T["frot_title"][lang])
@@ -813,7 +813,7 @@ if load_btn:
 
             st.plotly_chart(fig_fr, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  FORCE MOTRICE
             # -----------------------------------------------------------------
             st.subheader(T["mot_title"][lang])
@@ -868,7 +868,7 @@ if load_btn:
 
             st.plotly_chart(fig_m, use_container_width=True)
 
-            # -----------------------------------------------------------------
+            
             #  FORCE DE FREINAGE
             # -----------------------------------------------------------------
             st.subheader(T["frein_title"][lang])
