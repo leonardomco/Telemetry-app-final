@@ -7,11 +7,11 @@ import numpy as np
 from scipy.signal import savgol_filter
 import os
 
-# 1. Enable FastF1 internal caching (saves massive amounts of download time/CPU)
+# Enable FastF1 internal caching 
 os.makedirs('fastf1_cache', exist_ok=True)
 fastf1.Cache.enable_cache('fastf1_cache')
 
-# 2. Add Streamlit cache to the heavy calculation function
+# Add Streamlit cache 
 @st.cache_data(show_spinner=False)
 def donnees(annee, circuit, session, pilote):
     
@@ -33,12 +33,12 @@ def donnees (annee,circuit,session,pilote) -> pd.DataFrame:
     if driver_laps.empty:
         raise ValueError(f"Aucun tour trouvé pour le pilote {pilote} dans cette session.")
 
-    # 2. Pick the fastest lap safely
+    # Pick the fastest lap 
     fastest_lap = driver_laps.pick_fastest()
     if fastest_lap is None or fastest_lap.empty:
         raise ValueError(f"Le pilote {pilote} n'a enregistré aucun temps valide.")
 
-    # 3. Safe to dropna now
+    # dropna 
     tour = fastest_lap.dropna()
     pos = tour.get_pos_data().copy()
 
