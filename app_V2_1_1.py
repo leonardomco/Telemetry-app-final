@@ -83,6 +83,7 @@ def home():
 # --------------------------------------------------
 home_page = st.Page(home, title=labels["home"],  default=True)
 telemetry_page = st.Page("pages/1_Telemetry.py", title=labels["telemetry"],)
-info_page = st.Page("pages/2_Info.py", title=labels["info"])
+info_page = st.Page("pages/2_info.py", title=labels["info"])
 
 st.navigation([home_page, telemetry_page, info_page]).run()
+
