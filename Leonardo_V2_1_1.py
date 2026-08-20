@@ -1,9 +1,27 @@
+import streamlit as st
 import fastf1
 import pandas as pd
 import matplotlib.pyplot as plt
 import math as mt
 import numpy as np
 from scipy.signal import savgol_filter
+import os
+
+# 1. Enable FastF1 internal caching (saves massive amounts of download time/CPU)
+os.makedirs('fastf1_cache', exist_ok=True)
+fastf1.Cache.enable_cache('fastf1_cache')
+
+# 2. Add Streamlit cache to the heavy calculation function
+@st.cache_data(show_spinner=False)
+def donnees(annee, circuit, session, pilote):
+    
+    epreuve = fastf1.get_session(annee, circuit, session)
+    epreuve.load(telemetry=True, laps=True, weather=True)
+    circuit_info = epreuve.get_circuit_info()
+    driver_laps = epreuve.laps.pick_drivers(pilote)
+    
+    if driver_laps.empty:
+        raise ValueError(f"Aucun tour trouvé pour le pilote {pilote} dans cette session.")
 
 def donnees (annee,circuit,session,pilote) -> pd.DataFrame:
 
