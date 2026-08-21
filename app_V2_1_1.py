@@ -47,7 +47,7 @@ PAGE_LABELS = {
     "English": {
         "home": "Home",
         "telemetry": "Telemetry",
-        "info": "Informations"
+        "info": "Information"
     }
 }
 
@@ -61,14 +61,14 @@ def home():
         "Français": {
             "title": "Bienvenue sur mon application de télémétrie",
             "subtitle": "Ceci est la page principale.",
-            "telemetry": "Pour accéder à la télémétrie, cliquez sur « Telemetrie » dans la barre latérale.",
+            "telemetry": "Pour accéder à la télémétrie, cliquez sur « Télémetrie » dans la barre latérale.",
             "info": "Pour obtenir des informations, cliquez sur « Informations » dans la barre latérale."
         },
         "English": {
             "title": "Welcome to my telemetry application",
             "subtitle": "This is the main page.",
             "telemetry": "To access telemetry, click on « Telemetry » in the sidebar.",
-            "info": "To get information, click on « Informations » in the sidebar."
+            "info": "To get information, click on « Information » in the sidebar."
         }
     }
 
