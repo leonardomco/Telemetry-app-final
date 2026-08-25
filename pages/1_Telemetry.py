@@ -7,8 +7,13 @@ import fastf1
 from fastf1.core import Session
 from Leonardo_V2_1_1 import donnees   
 
+
+if "lang" not in st.session_state:
+    st.session_state["lang"] = "English"
+
+
 # Get language from session state (set in main app)
-raw_lang = st.session_state.get("lang", "Français")
+raw_lang = st.session_state.get("lang", "English")
 
 # 2. Map any short codes or lowercase variations to your exact dictionary keys
 lang_map = {
