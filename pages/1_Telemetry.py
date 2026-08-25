@@ -8,7 +8,7 @@ from fastf1.core import Session
 from Leonardo_V2_1_1 import donnees   
 
 # Get language from session state (set in main app)
-lang = st.session_state.lang
+lang = st.session_state.get("lang", "en")
 
 # Set translation dictionary and store it in session_state
 T = {
