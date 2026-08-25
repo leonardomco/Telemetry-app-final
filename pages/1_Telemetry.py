@@ -180,7 +180,7 @@ for key, default in {
 # -------------------------------------------------------------------------
 def session_to_fastf1(display_name):
     """Convert UI label (FR/EN) into FastF1's session name."""
-    lang = st.session_state.lang
+    lang = st.session_state.get("lang", "English")
     SESSION_MAP = st.session_state.SESSION_MAP
 
     for key, data in SESSION_MAP.items():
