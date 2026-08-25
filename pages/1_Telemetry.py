@@ -8,7 +8,20 @@ from fastf1.core import Session
 from Leonardo_V2_1_1 import donnees   
 
 # Get language from session state (set in main app)
-lang = st.session_state.get("lang", "en")
+raw_lang = st.session_state.get("lang", "Français")
+
+# 2. Map any short codes or lowercase variations to your exact dictionary keys
+lang_map = {
+    "fr": "Français",
+    "Français": "Français",
+    "french": "Français",
+    "en": "English",
+    "English": "English",
+    "english": "English"
+}
+
+# 3. Store the matched key in 'lang' (defaults to "Français" if not recognized)
+lang = lang_map.get(raw_lang, "Français")
 
 # Set translation dictionary and store it in session_state
 T = {
